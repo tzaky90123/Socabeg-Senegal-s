@@ -12,13 +12,29 @@ const Career: React.FC = () => {
   return (
     <div className="w-full">
       {/* 1. HERO (Fullscreen) */}
-      <section className="min-h-screen flex flex-col justify-center items-center bg-navy text-white text-center px-4">
-         <h1 className="text-3xl md:text-5xl font-bold mb-8 leading-tight">
-           {t("Careers", "Carrières")}
-         </h1>
-         <p className="text-sm md:text-base text-gray-300 mb-12 max-w-3xl mx-auto">
-           {t("Join the SOCABEG Team.", "Rejoignez l'Équipe SOCABEG.")}
-         </p>
+      <section className="relative min-h-screen flex flex-col justify-center items-center bg-navy text-white text-center px-4">
+         <div className="relative z-10 max-w-5xl mx-auto pb-20">
+           <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+             {t("Careers", "Carrières")}
+           </h1>
+           <p className="text-sm md:text-base text-gray-300 max-w-3xl mx-auto">
+             {t("Join the SOCABEG Team.", "Rejoignez l'Équipe SOCABEG.")}
+           </p>
+         </div>
+
+         {/* Buttons at Bottom */}
+        <div className="absolute bottom-12 w-full flex flex-col md:flex-row gap-4 justify-center items-center z-20 px-4">
+          <Link to={PageRoutes.CAREER} className="w-full md:w-auto">
+             <Button fullWidth className="bg-construction text-navy hover:bg-white hover:text-navy px-8 py-4 text-sm md:text-lg font-bold uppercase tracking-wider">
+              {t("Apply", "Postuler")}
+            </Button>
+          </Link>
+          <Link to={PageRoutes.CONTACT} className="w-full md:w-auto">
+             <Button fullWidth variant="outline" className="text-white border-white hover:bg-white hover:text-navy px-8 py-4 text-sm md:text-lg font-bold uppercase tracking-wider">
+              {t("Contact", "Contact")}
+            </Button>
+          </Link>
+        </div>
       </section>
 
       {/* 2. WHY WORK WITH US (Fullscreen) */}

@@ -4,6 +4,8 @@ import { useLanguage } from '../contexts/LanguageContext';
 import SectionHeader from '../components/SectionHeader';
 import Button from '../components/Button';
 import { MapPin, Phone, Mail } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { PageRoutes } from '../types';
 
 const Contact: React.FC = () => {
   const { t } = useLanguage();
@@ -11,13 +13,29 @@ const Contact: React.FC = () => {
   return (
     <div className="w-full">
       {/* 1. HERO (Fullscreen) */}
-      <section className="min-h-screen flex flex-col justify-center items-center bg-navy text-white text-center px-4">
-         <h1 className="text-3xl md:text-5xl font-bold mb-8 leading-tight">
-           {t("Contact Us", "Contactez-nous")}
-         </h1>
-         <p className="text-sm md:text-base text-gray-300 mb-12 max-w-3xl mx-auto">
-           {t("We Are Ready to Support Your Projects.", "Nous Sommes Prêts à Soutenir Vos Projets.")}
-         </p>
+      <section className="relative min-h-screen flex flex-col justify-center items-center bg-navy text-white text-center px-4">
+         <div className="relative z-10 max-w-5xl mx-auto pb-20">
+           <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+             {t("Contact Us", "Contactez-nous")}
+           </h1>
+           <p className="text-sm md:text-base text-gray-300 max-w-3xl mx-auto">
+             {t("We Are Ready to Support Your Projects.", "Nous Sommes Prêts à Soutenir Vos Projets.")}
+           </p>
+         </div>
+
+         {/* Buttons at Bottom */}
+        <div className="absolute bottom-12 w-full flex flex-col md:flex-row gap-4 justify-center items-center z-20 px-4">
+          <button onClick={() => window.location.href = 'mailto:info@socabeg.com'} className="w-full md:w-auto">
+             <Button fullWidth className="bg-construction text-navy hover:bg-white hover:text-navy px-8 py-4 text-sm md:text-lg font-bold uppercase tracking-wider">
+              {t("Email", "Email")}
+            </Button>
+          </button>
+          <button onClick={() => window.location.href = 'tel:+221338000000'} className="w-full md:w-auto">
+             <Button fullWidth variant="outline" className="text-white border-white hover:bg-white hover:text-navy px-8 py-4 text-sm md:text-lg font-bold uppercase tracking-wider">
+              {t("Call", "Appel")}
+            </Button>
+          </button>
+        </div>
       </section>
 
       {/* 2. MAIN CONTACT FORM (Fullscreen) */}

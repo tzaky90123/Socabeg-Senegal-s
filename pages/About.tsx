@@ -12,13 +12,29 @@ const About: React.FC = () => {
   return (
     <div className="w-full">
       {/* 1. HERO (Fullscreen) */}
-      <section className="min-h-screen flex flex-col justify-center items-center bg-navy text-white text-center px-4">
-        <h1 className="text-3xl md:text-5xl font-bold mb-8 leading-tight">
-          {t("About Us", "À Propos de Nous")}
-        </h1>
-        <p className="text-sm md:text-base text-gray-300 mb-12 max-w-3xl mx-auto">
-          {t("Building Senegal Through Excellence and Innovation.", "Construire le Sénégal par l'Excellence et l'Innovation.")}
-        </p>
+      <section className="relative min-h-screen flex flex-col justify-center items-center bg-navy text-white text-center px-4">
+        <div className="relative z-10 max-w-5xl mx-auto pb-20">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+            {t("About Us", "À Propos de Nous")}
+          </h1>
+          <p className="text-sm md:text-base text-gray-300 max-w-3xl mx-auto">
+            {t("Building Senegal Through Excellence and Innovation.", "Construire le Sénégal par l'Excellence et l'Innovation.")}
+          </p>
+        </div>
+        
+        {/* Buttons at Bottom */}
+        <div className="absolute bottom-12 w-full flex flex-col md:flex-row gap-4 justify-center items-center z-20 px-4">
+          <Link to={PageRoutes.HOME} className="w-full md:w-auto">
+             <Button fullWidth variant="outline" className="text-white border-white hover:bg-white hover:text-navy px-8 py-4 text-sm md:text-lg font-bold uppercase tracking-wider">
+              {t("Home", "Accueil")}
+            </Button>
+          </Link>
+          <Link to={PageRoutes.CONTACT} className="w-full md:w-auto">
+             <Button fullWidth className="bg-construction text-navy hover:bg-white hover:text-navy px-8 py-4 text-sm md:text-lg font-bold uppercase tracking-wider">
+              {t("Contact", "Contact")}
+            </Button>
+          </Link>
+        </div>
       </section>
 
       {/* 2. COMPANY OVERVIEW (Fullscreen) */}
@@ -80,9 +96,23 @@ const About: React.FC = () => {
          </div>
       </section>
 
-      {/* 6. CONTACT CTA (Fullscreen) */}
+      {/* 6. PARTNERS (Fullscreen) */}
+       <section className="min-h-screen flex flex-col justify-center bg-gray-light py-20 px-4">
+        <div className="max-w-7xl mx-auto w-full text-center">
+          <SectionHeader title={t("Our Partners", "Nos Partenaires")} subtitle={t("Trusted by Leaders Across Senegal", "Reconnu par les Leaders au Sénégal")} center />
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-12 mt-16 opacity-50">
+            {[1, 2, 3, 4].map((i) => (
+              <div key={i} className="h-24 bg-white flex items-center justify-center text-gray-400 font-bold text-xl rounded border border-gray-200">
+                PARTNER {i}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 7. CONTACT CTA (Fullscreen) */}
       <section className="min-h-screen flex flex-col justify-center items-center bg-construction text-navy text-center px-4">
-          <h2 className="text-2xl md:text-4xl font-bold mb-8">{t("Let’s Work Together", "Travaillons Ensemble")}</h2>
+          <h2 className="text-xl md:text-3xl font-bold mb-8">{t("Let’s Work Together", "Travaillons Ensemble")}</h2>
           <p className="text-2xl mb-12 opacity-80 font-bold uppercase tracking-widest">{t("Contact Our Team Today", "Contactez Notre Équipe Aujourd'hui")}</p>
           <Link to={PageRoutes.CONTACT}>
              <Button className="bg-navy text-white hover:bg-white hover:text-navy px-12 py-5 text-xl">

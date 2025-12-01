@@ -8,22 +8,37 @@ import { PageRoutes } from '../types';
 import { ArrowRight } from 'lucide-react';
 
 const Construction: React.FC = () => {
-  const { t, language } = useLanguage();
+  const { t } = useLanguage();
 
   return (
     <div className="w-full">
       
       {/* 1. HERO (Fullscreen) */}
-      <section className="min-h-screen flex flex-col justify-center items-center bg-navy text-white text-center px-4 relative">
+      <section className="relative min-h-screen flex flex-col justify-center items-center bg-navy text-white text-center px-4 overflow-hidden">
          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center opacity-20"></div>
-         <div className="relative z-10">
-           <h1 className="text-3xl md:text-5xl font-bold mb-8 leading-tight">
+         
+         <div className="relative z-10 max-w-5xl mx-auto pb-20">
+           <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
              {t("Construction Services", "Services de Construction")}
            </h1>
-           <p className="text-sm md:text-base text-gray-300 mb-12 max-w-3xl mx-auto">
+           <p className="text-sm md:text-base text-gray-300 max-w-3xl mx-auto">
              {t("We Build the Infrastructure of Tomorrow.", "Nous Construisons l'Infrastructure de Demain.")}
            </p>
          </div>
+
+         {/* Buttons at Bottom */}
+        <div className="absolute bottom-12 w-full flex flex-col md:flex-row gap-4 justify-center items-center z-20 px-4">
+          <Link to={PageRoutes.CONSTRUCTION} className="w-full md:w-auto">
+             <Button fullWidth className="bg-construction text-navy hover:bg-white hover:text-navy px-8 py-4 text-sm md:text-lg font-bold uppercase tracking-wider">
+              {t("Projects", "Projets")}
+            </Button>
+          </Link>
+          <Link to={PageRoutes.CONTACT} className="w-full md:w-auto">
+             <Button fullWidth variant="outline" className="text-white border-white hover:bg-white hover:text-navy px-8 py-4 text-sm md:text-lg font-bold uppercase tracking-wider">
+              {t("Contact", "Contact")}
+            </Button>
+          </Link>
+        </div>
       </section>
 
       {/* 2. SERVICES (Fullscreen) */}
@@ -66,7 +81,7 @@ const Construction: React.FC = () => {
       <section className="min-h-screen flex flex-col justify-center bg-white px-4 py-20">
          <div className="max-w-7xl mx-auto w-full">
             <SectionHeader title={t("Projects", "Projets")} subtitle={t("Our Construction Achievements", "Nos Réalisations de Construction")} />
-            <div className="grid md:grid-cols-2 gap-8 mt-16 h-[60vh]">
+            <div className="grid md:grid-cols-2 gap-8 mt-16 h-[50vh]">
                <div className="h-full bg-gray-200 overflow-hidden relative group">
                   <img src="https://images.unsplash.com/photo-1541976594389-6e9a9e403980?q=80&w=2070&auto=format&fit=crop" className="w-full h-full object-cover" alt="Project A"/>
                   <div className="absolute inset-0 bg-navy/80 opacity-0 group-hover:opacity-100 flex items-center justify-center text-white text-2xl font-bold transition-opacity">
@@ -112,7 +127,7 @@ const Construction: React.FC = () => {
 };
 
 const ProcessStep = ({number, title}: any) => (
-  <div className="bg-white p-8 shadow-lg rounded-full w-48 h-48 flex flex-col items-center justify-center mx-auto border-4 border-navy">
+  <div className="bg-white p-8 shadow-lg rounded-full w-48 h-48 flex flex-col items-center justify-center mx-auto border-4 border-navy z-10">
      <span className="text-3xl font-bold text-construction">{number}</span>
      <span className="text-sm font-bold text-navy uppercase mt-2">{title}</span>
   </div>

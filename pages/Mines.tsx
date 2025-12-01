@@ -12,15 +12,30 @@ const Mines: React.FC = () => {
   return (
     <div className="w-full">
       {/* 1. HERO (Fullscreen) */}
-      <section className="min-h-screen flex flex-col justify-center items-center bg-navy text-white text-center px-4 relative">
+      <section className="relative min-h-screen flex flex-col justify-center items-center bg-navy text-white text-center px-4 overflow-hidden">
          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1516937941344-00b4ec73303b?q=80&w=2069&auto=format&fit=crop')] bg-cover bg-center opacity-30"></div>
-         <div className="relative z-10">
-          <h1 className="text-3xl md:text-5xl font-bold mb-8 leading-tight">
+         
+         <div className="relative z-10 max-w-5xl mx-auto pb-20">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
             {t("Mining Operations", "Opérations Minières")}
           </h1>
-          <p className="text-sm md:text-base text-gray-300 mb-12 max-w-3xl mx-auto">
+          <p className="text-sm md:text-base text-gray-300 max-w-3xl mx-auto">
             {t("Responsible Exploration for National Growth.", "Exploration Responsable pour la Croissance Nationale.")}
           </p>
+        </div>
+
+        {/* Buttons at Bottom */}
+        <div className="absolute bottom-12 w-full flex flex-col md:flex-row gap-4 justify-center items-center z-20 px-4">
+          <Link to={PageRoutes.MINES} className="w-full md:w-auto">
+             <Button fullWidth className="bg-construction text-navy hover:bg-white hover:text-navy px-8 py-4 text-sm md:text-lg font-bold uppercase tracking-wider">
+              {t("Projects", "Projets")}
+            </Button>
+          </Link>
+          <Link to={PageRoutes.CONTACT} className="w-full md:w-auto">
+             <Button fullWidth variant="outline" className="text-white border-white hover:bg-white hover:text-navy px-8 py-4 text-sm md:text-lg font-bold uppercase tracking-wider">
+              {t("Contact", "Contact")}
+            </Button>
+          </Link>
         </div>
       </section>
 
@@ -68,9 +83,9 @@ const Mines: React.FC = () => {
           <div className="max-w-7xl mx-auto w-full text-center">
              <SectionHeader title={t("Compliance", "Conformité")} subtitle={t("Legal & Environmental Certifications", "Certifications Légales et Environnementales")} light center />
              <div className="grid md:grid-cols-3 gap-12 mt-16">
-                <div className="h-32 bg-white/10 flex items-center justify-center">ISO 14001</div>
-                <div className="h-32 bg-white/10 flex items-center justify-center">Safety First</div>
-                <div className="h-32 bg-white/10 flex items-center justify-center">Eco Certified</div>
+                <div className="h-32 bg-white/10 flex items-center justify-center font-bold">ISO 14001</div>
+                <div className="h-32 bg-white/10 flex items-center justify-center font-bold">Safety First</div>
+                <div className="h-32 bg-white/10 flex items-center justify-center font-bold">Eco Certified</div>
              </div>
           </div>
       </section>

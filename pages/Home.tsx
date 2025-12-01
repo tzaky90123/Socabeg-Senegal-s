@@ -5,7 +5,7 @@ import { useLanguage } from '../contexts/LanguageContext';
 import Button from '../components/Button';
 import SectionHeader from '../components/SectionHeader';
 import { PageRoutes } from '../types';
-import { ArrowRight, Building2, HardHat, Pickaxe, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, HardHat, Building2, Pickaxe, CheckCircle2 } from 'lucide-react';
 
 const Home: React.FC = () => {
   const { t } = useLanguage();
@@ -23,31 +23,34 @@ const Home: React.FC = () => {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/50 to-transparent"></div>
         </div>
-        <div className="relative z-10 max-w-5xl mx-auto animate-fadeIn">
-          <h1 className="text-3xl md:text-5xl font-bold mb-8 leading-tight">
+        
+        <div className="relative z-10 max-w-5xl mx-auto pb-20">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
             {t("Your Trusted Partner for Senegal’s Development", "Votre Partenaire de Confiance pour le Développement du Sénégal")}
           </h1>
-          <p className="text-sm md:text-base text-gray-300 mb-12 max-w-3xl mx-auto">
+          <p className="text-sm md:text-base text-gray-300 max-w-3xl mx-auto">
             {t("Construction, Real Estate, and Mining for a Sustainable Future.", "Construction, Immobilier et Mines pour un Avenir Durable.")}
           </p>
-          <div className="flex flex-col md:flex-row gap-4 justify-center">
-            <Link to={PageRoutes.CONSTRUCTION}>
-              <Button className="bg-construction text-navy hover:bg-white hover:text-navy px-8 py-4 text-lg font-bold uppercase tracking-wider">
-                {t("Explore Our Services", "Découvrir Nos Services")}
-              </Button>
-            </Link>
-            <Link to={PageRoutes.CONTACT}>
-               <Button variant="outline" className="text-white border-white hover:bg-white hover:text-navy px-8 py-4 text-lg font-bold uppercase tracking-wider">
-                {t("Contact Us", "Contactez-nous")}
-              </Button>
-            </Link>
-          </div>
+        </div>
+
+        {/* Buttons at Bottom of Hero */}
+        <div className="absolute bottom-12 w-full flex flex-col md:flex-row gap-4 justify-center items-center z-20 px-4">
+          <Link to={PageRoutes.CONSTRUCTION} className="w-full md:w-auto">
+            <Button fullWidth className="bg-construction text-navy hover:bg-white hover:text-navy px-8 py-4 text-sm md:text-lg font-bold uppercase tracking-wider">
+              {t("Explore Our Services", "Découvrir Nos Services")}
+            </Button>
+          </Link>
+          <Link to={PageRoutes.CONTACT} className="w-full md:w-auto">
+              <Button fullWidth variant="outline" className="text-white border-white hover:bg-white hover:text-navy px-8 py-4 text-sm md:text-lg font-bold uppercase tracking-wider">
+              {t("Contact Us", "Contactez-nous")}
+            </Button>
+          </Link>
         </div>
       </section>
 
       {/* 2. ABOUT PREVIEW (Fullscreen) */}
-      <section className="min-h-screen flex flex-col justify-center bg-white py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-16 items-center">
+      <section className="min-h-screen flex flex-col justify-center bg-white py-20 px-4">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center w-full">
           <div>
             <SectionHeader 
               title={t("About SOCABEG", "À Propos de SOCABEG")} 
@@ -76,8 +79,8 @@ const Home: React.FC = () => {
       </section>
 
       {/* 3. SERVICES OVERVIEW (Fullscreen) */}
-      <section className="min-h-screen flex flex-col justify-center bg-gray-light py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+      <section className="min-h-screen flex flex-col justify-center bg-gray-light py-20 px-4">
+        <div className="max-w-7xl mx-auto w-full">
           <SectionHeader title={t("Our Services", "Nos Services")} subtitle={t("What We Deliver to Senegal", "Ce Que Nous Apportons au Sénégal")} className="mb-16" />
           
           <div className="grid md:grid-cols-3 gap-8">
@@ -113,8 +116,8 @@ const Home: React.FC = () => {
       </section>
 
       {/* 4. WHY CHOOSE US (Fullscreen) */}
-      <section className="min-h-screen flex flex-col justify-center bg-navy text-white py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+      <section className="min-h-screen flex flex-col justify-center bg-navy text-white py-20 px-4">
+        <div className="max-w-7xl mx-auto w-full">
            <div className="grid md:grid-cols-2 gap-16 items-center">
              <div>
                <SectionHeader 
@@ -141,8 +144,8 @@ const Home: React.FC = () => {
       </section>
 
       {/* 5. FEATURED PROJECTS (Fullscreen) */}
-      <section className="min-h-screen flex flex-col justify-center bg-white py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+      <section className="min-h-screen flex flex-col justify-center bg-white py-20 px-4">
+        <div className="max-w-7xl mx-auto w-full">
           <SectionHeader title={t("Our Projects", "Nos Projets")} subtitle={t("A Selection of Our Achievements", "Une Sélection de Nos Réalisations")} />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
              <div className="h-80 bg-gray-200 relative group overflow-hidden rounded-sm">
@@ -165,8 +168,8 @@ const Home: React.FC = () => {
       </section>
 
       {/* 6. TESTIMONIALS (Fullscreen) */}
-      <section className="min-h-screen flex flex-col justify-center bg-gray-light py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center">
+      <section className="min-h-screen flex flex-col justify-center bg-gray-light py-20 px-4">
+        <div className="max-w-7xl mx-auto w-full text-center">
           <SectionHeader title={t("Testimonials", "Témoignages")} subtitle={t("What Our Clients Say", "Ce Que Disent Nos Clients")} center />
           <div className="mt-12 max-w-4xl mx-auto">
              <div className="bg-white p-12 shadow-lg border-t-8 border-construction relative">
@@ -181,20 +184,20 @@ const Home: React.FC = () => {
       </section>
 
       {/* 7. PARTNERS (Fullscreen) */}
-      <section className="min-h-screen flex flex-col justify-center bg-white py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center">
+      <section className="min-h-screen flex flex-col justify-center bg-white py-20 px-4">
+        <div className="max-w-7xl mx-auto w-full text-center">
           <SectionHeader title={t("Our Partners", "Nos Partenaires")} subtitle={t("Trusted by Leaders Across Senegal", "Reconnu par les Leaders au Sénégal")} center />
           <div className="grid grid-cols-2 md:grid-cols-4 gap-12 mt-16 opacity-50">
             {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
               <div key={i} className="h-24 bg-gray-100 flex items-center justify-center text-gray-400 font-bold text-xl rounded border border-gray-200">
-                LOGO {i}
+                PARTNER {i}
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* 8. CTA (Fullscreen) */}
+      {/* 8. BIG CTA (Fullscreen) */}
       <section className="min-h-screen flex flex-col justify-center items-center bg-navy text-white text-center px-4">
          <SectionHeader title={t("Ready to Work With Us?", "Prêt à Travailler Avec Nous ?")} subtitle={t("Let’s Build Senegal’s Future Together.", "Construisons Ensemble l'Avenir du Sénégal.")} light center />
          <Link to={PageRoutes.CONTACT} className="mt-12">
@@ -207,8 +210,6 @@ const Home: React.FC = () => {
     </div>
   );
 };
-
-/* --- Helpers --- */
 
 const ServiceCard = ({ icon, title, desc, link }: any) => (
   <div className="bg-white group p-10 shadow-lg border-b-4 border-transparent hover:border-construction transition-all duration-300 flex flex-col items-center text-center">

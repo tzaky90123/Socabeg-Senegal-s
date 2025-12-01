@@ -3,7 +3,7 @@
 <html lang="id">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/svg+xml" href="https://socabeg.com/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SOCABEG - Professional Services</title>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -16,16 +16,16 @@
           extend: {
             colors: {
               navy: {
-                DEFAULT: '#0A1A2F', // Updated Navy
+                DEFAULT: '#0A1A2F',
                 light: '#162840',
                 dark: '#050D18'
               },
               construction: {
-                DEFAULT: '#D4A017', // Updated Gold
+                DEFAULT: '#D4A017',
                 hover: '#B88A10'
               },
               gray: {
-                light: '#F3F3F3', // Updated Light Grey
+                light: '#F3F3F3',
                 DEFAULT: '#F3F3F3',
                 dark: '#4B5563'
               }
@@ -46,6 +46,13 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
+      }
+      .hide-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .hide-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
       }
     </style>
   <script type="importmap">
