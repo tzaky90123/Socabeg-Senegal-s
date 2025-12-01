@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
 import Button from '../components/Button';
 import SectionHeader from '../components/SectionHeader';
+import HeroBottomNav from '../components/HeroBottomNav';
 import { PageRoutes } from '../types';
 import { ArrowRight, HardHat, Building2, Pickaxe, CheckCircle2 } from 'lucide-react';
 
@@ -14,27 +15,27 @@ const Home: React.FC = () => {
     <div className="w-full">
       
       {/* 1. HERO (Fullscreen) */}
-      <section className="relative min-h-screen flex flex-col justify-center items-center bg-navy text-white overflow-hidden text-center px-4">
+      <section className="relative min-h-screen flex flex-col justify-center items-center bg-navy text-white overflow-hidden text-center px-4 pb-20">
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2070&auto=format&fit=crop" 
+            src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2070&auto=format&fit=crop" 
             alt="SOCABEG Construction" 
-            className="w-full h-full object-cover opacity-30"
+            className="w-full h-full object-cover opacity-40"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/50 to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/60 to-transparent"></div>
         </div>
         
-        <div className="relative z-10 max-w-5xl mx-auto pb-20">
+        <div className="relative z-10 max-w-5xl mx-auto mb-12">
           <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
             {t("Your Trusted Partner for Senegal’s Development", "Votre Partenaire de Confiance pour le Développement du Sénégal")}
           </h1>
-          <p className="text-sm md:text-base text-gray-300 max-w-3xl mx-auto">
+          <p className="text-sm md:text-base text-gray-200 max-w-3xl mx-auto font-light">
             {t("Construction, Real Estate, and Mining for a Sustainable Future.", "Construction, Immobilier et Mines pour un Avenir Durable.")}
           </p>
         </div>
 
-        {/* Buttons at Bottom of Hero */}
-        <div className="absolute bottom-12 w-full flex flex-col md:flex-row gap-4 justify-center items-center z-20 px-4">
+        {/* Existing CTA Buttons */}
+        <div className="relative z-10 flex flex-col md:flex-row gap-4 justify-center items-center w-full px-4">
           <Link to={PageRoutes.CONSTRUCTION} className="w-full md:w-auto">
             <Button fullWidth className="bg-construction text-navy hover:bg-white hover:text-navy px-8 py-4 text-sm md:text-lg font-bold uppercase tracking-wider">
               {t("Explore Our Services", "Découvrir Nos Services")}
@@ -46,6 +47,9 @@ const Home: React.FC = () => {
             </Button>
           </Link>
         </div>
+
+        {/* NEW Bottom Navigation */}
+        <HeroBottomNav />
       </section>
 
       {/* 2. ABOUT PREVIEW (Fullscreen) */}
@@ -56,23 +60,24 @@ const Home: React.FC = () => {
               title={t("About SOCABEG", "À Propos de SOCABEG")} 
               subtitle={t("We Build, Develop, and Empower Senegal.", "Nous Construisons, Développons et Autonomisons le Sénégal.")}
             />
-            <p className="text-gray-600 text-lg leading-relaxed mb-10">
+            <p className="text-gray-600 text-lg leading-relaxed mb-10 font-light">
               {t(
                 "SOCABEG is a multidisciplinary company operating in construction, real estate, and mining. We are committed to developing modern infrastructure and contributing to Senegal’s economic and social progress.",
                 "SOCABEG est une entreprise multidisciplinaire opérant dans la construction, l'immobilier et les mines. Nous nous engageons à développer des infrastructures modernes et à contribuer au progrès économique et social du Sénégal."
               )}
             </p>
             <Link to={PageRoutes.ABOUT}>
-              <Button className="bg-navy text-white hover:bg-construction hover:text-navy px-8 py-3">
+              <Button className="bg-navy text-white hover:bg-construction hover:text-navy px-8 py-3 uppercase tracking-widest text-sm">
                 {t("Learn More About Us", "En Savoir Plus Sur Nous")}
               </Button>
             </Link>
           </div>
-          <div className="relative h-96 w-full">
+          <div className="relative h-96 w-full group">
+            <div className="absolute top-4 -left-4 w-full h-full border-4 border-construction z-0"></div>
             <img 
-              src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2070&auto=format&fit=crop" 
+              src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2070&auto=format&fit=crop" 
               alt="About Socabeg" 
-              className="w-full h-full object-cover rounded-sm shadow-2xl"
+              className="w-full h-full object-cover relative z-10 shadow-2xl grayscale group-hover:grayscale-0 transition-all duration-500"
             />
           </div>
         </div>
@@ -87,28 +92,16 @@ const Home: React.FC = () => {
             <ServiceCard 
               icon={<HardHat className="w-10 h-10" />}
               title={t("Construction", "Construction")}
-              desc={t(
-                "Infrastructure and structural projects that shape communities.",
-                "Projets d'infrastructure et structurels qui façonnent les communautés."
-              )}
               link={PageRoutes.CONSTRUCTION}
             />
             <ServiceCard 
               icon={<Building2 className="w-10 h-10" />}
               title={t("Real Estate", "Immobilier")}
-              desc={t(
-                "Modern homes, properties, and investment opportunities.",
-                "Maisons modernes, propriétés et opportunités d'investissement."
-              )}
               link={PageRoutes.REAL_ESTATE}
             />
              <ServiceCard 
               icon={<Pickaxe className="w-10 h-10" />}
               title={t("Mining", "Mines")}
-              desc={t(
-                "Responsible extraction supporting national growth.",
-                "Extraction responsable soutenant la croissance nationale."
-              )}
               link={PageRoutes.MINES}
             />
           </div>
@@ -126,16 +119,16 @@ const Home: React.FC = () => {
                   light 
                 />
              </div>
-             <div className="grid grid-cols-1 gap-8">
+             <div className="grid grid-cols-1 gap-6">
                 {[
                   {en: "Expertise in 3 sectors", fr: "Expertise dans 3 secteurs"},
                   {en: "Commitment to quality & safety", fr: "Engagement envers la qualité et la sécurité"},
                   {en: "Experienced professional team", fr: "Équipe professionnelle expérimentée"},
                   {en: "Proven track record", fr: "Historique éprouvé"}
                 ].map((item, i) => (
-                  <div key={i} className="flex items-center gap-6 p-6 bg-navy-light border-l-4 border-construction rounded-sm">
+                  <div key={i} className="flex items-center gap-6 p-6 bg-white/5 hover:bg-white/10 transition-colors border-l-4 border-construction">
                     <CheckCircle2 className="w-8 h-8 text-construction flex-shrink-0" />
-                    <span className="text-xl font-medium">{t(item.en, item.fr)}</span>
+                    <span className="text-lg md:text-xl font-medium tracking-wide">{t(item.en, item.fr)}</span>
                   </div>
                 ))}
              </div>
@@ -148,18 +141,22 @@ const Home: React.FC = () => {
         <div className="max-w-7xl mx-auto w-full">
           <SectionHeader title={t("Our Projects", "Nos Projets")} subtitle={t("A Selection of Our Achievements", "Une Sélection de Nos Réalisations")} />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
-             <div className="h-80 bg-gray-200 relative group overflow-hidden rounded-sm">
+             <div className="h-96 bg-gray-200 relative group overflow-hidden">
                 <img src="https://images.unsplash.com/photo-1590674899484-d5640e854abe?q=80&w=2067&auto=format&fit=crop" alt="Project 1" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"/>
-                <div className="absolute inset-0 bg-navy/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white font-bold text-xl">Project Alpha</div>
+                <div className="absolute inset-0 bg-navy/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                  <span className="text-white font-bold text-2xl uppercase border-b-2 border-construction pb-2">Infrastructure Project</span>
+                </div>
              </div>
-             <div className="h-80 bg-gray-200 relative group overflow-hidden rounded-sm">
+             <div className="h-96 bg-gray-200 relative group overflow-hidden">
                 <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop" alt="Project 2" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"/>
-                <div className="absolute inset-0 bg-navy/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white font-bold text-xl">Project Beta</div>
+                <div className="absolute inset-0 bg-navy/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                  <span className="text-white font-bold text-2xl uppercase border-b-2 border-construction pb-2">Residential Complex</span>
+                </div>
              </div>
           </div>
           <div className="mt-12 text-center">
             <Link to={PageRoutes.CONSTRUCTION}>
-              <Button variant="outline" className="border-navy text-navy hover:bg-navy hover:text-white px-8">
+              <Button variant="outline" className="border-navy text-navy hover:bg-navy hover:text-white px-12 uppercase tracking-widest">
                 {t("See More Projects", "Voir Plus de Projets")}
               </Button>
             </Link>
@@ -171,13 +168,14 @@ const Home: React.FC = () => {
       <section className="min-h-screen flex flex-col justify-center bg-gray-light py-20 px-4">
         <div className="max-w-7xl mx-auto w-full text-center">
           <SectionHeader title={t("Testimonials", "Témoignages")} subtitle={t("What Our Clients Say", "Ce Que Disent Nos Clients")} center />
-          <div className="mt-12 max-w-4xl mx-auto">
-             <div className="bg-white p-12 shadow-lg border-t-8 border-construction relative">
-               <span className="text-6xl text-gray-200 absolute top-4 left-4">"</span>
-               <p className="text-2xl text-navy italic mb-8 relative z-10">
-                 "{t("Professional, timely, and excellent quality work. SOCABEG is the best partner we have worked with.", "Travail professionnel, ponctuel et d'excellente qualité. SOCABEG est le meilleur partenaire avec lequel nous avons travaillé.")}"
+          <div className="mt-16 max-w-4xl mx-auto">
+             <div className="bg-white p-16 shadow-xl relative">
+               <span className="text-9xl text-gray-100 absolute top-0 left-4 font-serif leading-none">"</span>
+               <p className="text-2xl text-navy font-light leading-relaxed relative z-10 mb-8">
+                 {t("Professional, timely, and excellent quality work. SOCABEG is the best partner we have worked with.", "Travail professionnel, ponctuel et d'excellente qualité. SOCABEG est le meilleur partenaire avec lequel nous avons travaillé.")}
                </p>
-               <div className="font-bold text-construction uppercase tracking-widest">- Client Name</div>
+               <div className="w-12 h-1 bg-construction mx-auto mb-4"></div>
+               <div className="font-bold text-navy uppercase tracking-widest text-sm">CEO, Leading Development Firm</div>
              </div>
           </div>
         </div>
@@ -187,10 +185,10 @@ const Home: React.FC = () => {
       <section className="min-h-screen flex flex-col justify-center bg-white py-20 px-4">
         <div className="max-w-7xl mx-auto w-full text-center">
           <SectionHeader title={t("Our Partners", "Nos Partenaires")} subtitle={t("Trusted by Leaders Across Senegal", "Reconnu par les Leaders au Sénégal")} center />
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-12 mt-16 opacity-50">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 opacity-60">
             {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
-              <div key={i} className="h-24 bg-gray-100 flex items-center justify-center text-gray-400 font-bold text-xl rounded border border-gray-200">
-                PARTNER {i}
+              <div key={i} className="h-32 bg-gray-50 flex items-center justify-center text-gray-300 font-bold text-2xl border border-gray-100 grayscale hover:grayscale-0 hover:opacity-100 transition-all">
+                LOGO {i}
               </div>
             ))}
           </div>
@@ -198,28 +196,32 @@ const Home: React.FC = () => {
       </section>
 
       {/* 8. BIG CTA (Fullscreen) */}
-      <section className="min-h-screen flex flex-col justify-center items-center bg-navy text-white text-center px-4">
-         <SectionHeader title={t("Ready to Work With Us?", "Prêt à Travailler Avec Nous ?")} subtitle={t("Let’s Build Senegal’s Future Together.", "Construisons Ensemble l'Avenir du Sénégal.")} light center />
-         <Link to={PageRoutes.CONTACT} className="mt-12">
-            <Button className="bg-construction text-navy hover:bg-white hover:text-navy px-12 py-5 text-xl font-bold uppercase tracking-widest shadow-2xl transform hover:scale-105 transition-all">
-               {t("Contact Us Today", "Contactez-nous Aujourd'hui")}
-            </Button>
-         </Link>
+      <section className="min-h-screen flex flex-col justify-center items-center bg-navy text-white text-center px-4 relative">
+         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop')] bg-cover bg-center opacity-10"></div>
+         <div className="relative z-10">
+           <SectionHeader title={t("Ready to Work With Us?", "Prêt à Travailler Avec Nous ?")} subtitle={t("Let’s Build Senegal’s Future Together.", "Construisons Ensemble l'Avenir du Sénégal.")} light center />
+           <Link to={PageRoutes.CONTACT} className="mt-12 inline-block">
+              <Button className="bg-construction text-navy hover:bg-white hover:text-navy px-12 py-5 text-xl font-bold uppercase tracking-widest shadow-2xl transform hover:scale-105 transition-all">
+                 {t("Contact Us Today", "Contactez-nous Aujourd'hui")}
+              </Button>
+           </Link>
+         </div>
       </section>
 
     </div>
   );
 };
 
-const ServiceCard = ({ icon, title, desc, link }: any) => (
-  <div className="bg-white group p-10 shadow-lg border-b-4 border-transparent hover:border-construction transition-all duration-300 flex flex-col items-center text-center">
-    <div className="mb-8 w-20 h-20 bg-navy flex items-center justify-center rounded-full group-hover:bg-construction transition-colors text-white">
-      {icon}
+const ServiceCard = ({ icon, title, link }: any) => (
+  <div className="bg-white group p-12 shadow-lg hover:shadow-2xl border-b-8 border-transparent hover:border-construction transition-all duration-300 flex flex-col items-center text-center h-full justify-between">
+    <div>
+      <div className="mb-8 w-24 h-24 bg-gray-50 flex items-center justify-center rounded-full group-hover:bg-navy transition-colors text-navy group-hover:text-white mx-auto">
+        {icon}
+      </div>
+      <h3 className="text-2xl font-bold text-navy mb-4 uppercase tracking-wide">{title}</h3>
     </div>
-    <h3 className="text-2xl font-bold text-navy mb-4 uppercase tracking-wide">{title}</h3>
-    <p className="text-gray-600 mb-8 leading-relaxed">{desc}</p>
-    <Link to={link} className="mt-auto flex items-center text-construction font-bold uppercase text-sm hover:gap-2 transition-all">
-      View Service <ArrowRight className="w-4 h-4 ml-1" />
+    <Link to={link} className="mt-8 flex items-center text-construction font-bold uppercase text-sm tracking-widest hover:gap-2 transition-all">
+      View Details <ArrowRight className="w-4 h-4 ml-2" />
     </Link>
   </div>
 );

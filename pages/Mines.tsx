@@ -3,6 +3,7 @@ import React from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import SectionHeader from '../components/SectionHeader';
 import Button from '../components/Button';
+import HeroBottomNav from '../components/HeroBottomNav';
 import { Link } from 'react-router-dom';
 import { PageRoutes } from '../types';
 
@@ -12,20 +13,27 @@ const Mines: React.FC = () => {
   return (
     <div className="w-full">
       {/* 1. HERO (Fullscreen) */}
-      <section className="relative min-h-screen flex flex-col justify-center items-center bg-navy text-white text-center px-4 overflow-hidden">
-         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1516937941344-00b4ec73303b?q=80&w=2069&auto=format&fit=crop')] bg-cover bg-center opacity-30"></div>
+      <section className="relative min-h-screen flex flex-col justify-center items-center bg-navy text-white text-center px-4 overflow-hidden pb-20">
+         <div className="absolute inset-0 z-0">
+            <img 
+              src="https://images.unsplash.com/photo-1516937941344-00b4ec73303b?q=80&w=2069&auto=format&fit=crop" 
+              alt="Mining Excavator" 
+              className="w-full h-full object-cover opacity-30"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/50 to-transparent"></div>
+         </div>
          
-         <div className="relative z-10 max-w-5xl mx-auto pb-20">
+         <div className="relative z-10 max-w-5xl mx-auto mb-12">
           <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
             {t("Mining Operations", "Opérations Minières")}
           </h1>
-          <p className="text-sm md:text-base text-gray-300 max-w-3xl mx-auto">
+          <p className="text-sm md:text-base text-gray-200 max-w-3xl mx-auto font-light">
             {t("Responsible Exploration for National Growth.", "Exploration Responsable pour la Croissance Nationale.")}
           </p>
         </div>
 
-        {/* Buttons at Bottom */}
-        <div className="absolute bottom-12 w-full flex flex-col md:flex-row gap-4 justify-center items-center z-20 px-4">
+        {/* Buttons */}
+        <div className="relative z-10 flex flex-col md:flex-row gap-4 justify-center items-center px-4">
           <Link to={PageRoutes.MINES} className="w-full md:w-auto">
              <Button fullWidth className="bg-construction text-navy hover:bg-white hover:text-navy px-8 py-4 text-sm md:text-lg font-bold uppercase tracking-wider">
               {t("Projects", "Projets")}
@@ -37,6 +45,9 @@ const Mines: React.FC = () => {
             </Button>
           </Link>
         </div>
+
+        {/* Hero Nav */}
+        <HeroBottomNav />
       </section>
 
       {/* 2. SERVICES (Fullscreen) */}
@@ -47,8 +58,8 @@ const Mines: React.FC = () => {
              {[
                "Exploration", "Extraction", "Mineral Processing", "Logistics", "Mine Management"
              ].map((svc, i) => (
-               <div key={i} className="py-12 px-4 bg-gray-50 border-t-4 border-navy hover:bg-navy hover:text-white transition-all">
-                 <h3 className="font-bold text-sm uppercase tracking-widest">{t(svc, svc)}</h3>
+               <div key={i} className="py-16 px-6 bg-gray-50 border-t-8 border-navy hover:bg-navy hover:text-white transition-all duration-300 group">
+                 <h3 className="font-bold text-sm md:text-base uppercase tracking-widest leading-relaxed">{t(svc, svc)}</h3>
                </div>
              ))}
            </div>
@@ -59,11 +70,11 @@ const Mines: React.FC = () => {
        <section className="min-h-screen flex flex-col justify-center bg-construction text-navy px-4 py-20">
         <div className="max-w-5xl mx-auto w-full text-center">
           <SectionHeader title={t("Responsibility", "Responsabilité")} subtitle={t("Sustainable & Ethical Mining", "Exploitation Minière Durable et Éthique")} center />
-           <p className="text-xl md:text-2xl font-medium mt-12 leading-relaxed">
-             {t(
-               "Environmental commitment, safety standards, and sustainable practices.",
-               "Engagement environnemental, normes de sécurité et pratiques durables."
-             )}
+           <p className="text-xl md:text-3xl font-medium mt-12 leading-relaxed max-w-4xl mx-auto">
+             "{t(
+               "Environmental commitment, safety standards, and sustainable practices are at the core of our operations.",
+               "L'engagement environnemental, les normes de sécurité et les pratiques durables sont au cœur de nos opérations."
+             )}"
            </p>
         </div>
       </section>
@@ -72,8 +83,11 @@ const Mines: React.FC = () => {
       <section className="min-h-screen flex flex-col justify-center bg-white px-4 py-20">
          <div className="max-w-7xl mx-auto w-full">
             <SectionHeader title={t("Projects", "Projets")} subtitle={t("Mining Achievements", "Réalisations Minières")} />
-            <div className="h-[50vh] bg-gray-200 mt-12 w-full flex items-center justify-center text-gray-500 text-2xl font-bold">
-               Map of Mining Sites
+            <div className="h-[60vh] bg-navy mt-12 w-full flex flex-col items-center justify-center text-gray-500 rounded-sm relative overflow-hidden group">
+               <img src="https://images.unsplash.com/photo-1579566346927-c68383817a25?q=80&w=2070&auto=format&fit=crop" alt="Map" className="absolute inset-0 w-full h-full object-cover opacity-50 grayscale"/>
+               <div className="relative z-10 p-12 bg-white/10 backdrop-blur-md border border-white/20">
+                  <h3 className="text-white text-3xl font-bold uppercase tracking-widest">Active Sites Map</h3>
+               </div>
             </div>
          </div>
       </section>
@@ -82,10 +96,19 @@ const Mines: React.FC = () => {
       <section className="min-h-screen flex flex-col justify-center bg-navy text-white px-4 py-20">
           <div className="max-w-7xl mx-auto w-full text-center">
              <SectionHeader title={t("Compliance", "Conformité")} subtitle={t("Legal & Environmental Certifications", "Certifications Légales et Environnementales")} light center />
-             <div className="grid md:grid-cols-3 gap-12 mt-16">
-                <div className="h-32 bg-white/10 flex items-center justify-center font-bold">ISO 14001</div>
-                <div className="h-32 bg-white/10 flex items-center justify-center font-bold">Safety First</div>
-                <div className="h-32 bg-white/10 flex items-center justify-center font-bold">Eco Certified</div>
+             <div className="grid md:grid-cols-3 gap-12 mt-20">
+                <div className="h-48 bg-white/5 flex flex-col items-center justify-center border border-white/10">
+                   <span className="text-4xl font-bold text-construction mb-2">ISO</span>
+                   <span className="text-xl">14001</span>
+                </div>
+                <div className="h-48 bg-white/5 flex flex-col items-center justify-center border border-white/10">
+                   <span className="text-4xl font-bold text-construction mb-2">HSE</span>
+                   <span className="text-xl">Standards</span>
+                </div>
+                <div className="h-48 bg-white/5 flex flex-col items-center justify-center border border-white/10">
+                   <span className="text-4xl font-bold text-construction mb-2">CSR</span>
+                   <span className="text-xl">Commitment</span>
+                </div>
              </div>
           </div>
       </section>
@@ -93,11 +116,13 @@ const Mines: React.FC = () => {
       {/* 6. CTA (Fullscreen) */}
       <section className="min-h-screen flex flex-col justify-center items-center bg-white text-navy text-center px-4">
           <SectionHeader title={t("Work With Our Mining Team", "Travailler Avec Notre Équipe Minière")} subtitle={t("Contact Us for More Information", "Contactez-nous pour Plus d'Informations")} center />
-          <Link to={PageRoutes.CONTACT} className="mt-12">
-            <Button className="bg-navy text-white px-12 py-5 text-xl font-bold uppercase tracking-widest">
-               {t("Contact Us", "Contactez-nous")}
-            </Button>
-          </Link>
+          <div className="mt-12">
+            <Link to={PageRoutes.CONTACT}>
+                <Button className="bg-navy text-white px-12 py-5 text-xl font-bold uppercase tracking-widest shadow-xl hover:bg-construction hover:text-navy">
+                  {t("Contact Us", "Contactez-nous")}
+                </Button>
+            </Link>
+          </div>
       </section>
     </div>
   );

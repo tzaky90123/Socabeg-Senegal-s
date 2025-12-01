@@ -15,7 +15,7 @@ const Navbar: React.FC = () => {
     { name: t('About', 'À Propos'), path: PageRoutes.ABOUT },
     { name: t('Construction', 'Construction'), path: PageRoutes.CONSTRUCTION },
     { name: t('Real Estate', 'Immobilier'), path: PageRoutes.REAL_ESTATE },
-    { name: t('Mining', 'Mines'), path: PageRoutes.MINES },
+    { name: t('Mines', 'Mines'), path: PageRoutes.MINES },
     { name: t('Careers', 'Carrières'), path: PageRoutes.CAREER },
     { name: t('Contact', 'Contact'), path: PageRoutes.CONTACT },
   ];
@@ -36,9 +36,9 @@ const Navbar: React.FC = () => {
           {/* LEFT: Sidebar Toggle */}
           <button 
             onClick={() => setIsSidebarOpen(true)}
-            className="p-2 hover:bg-gray-100 rounded-full transition-colors text-navy"
+            className="p-2 hover:bg-gray-100 rounded-full transition-colors text-navy group"
           >
-            <Menu className="w-8 h-8" />
+            <Menu className="w-8 h-8 group-hover:text-construction transition-colors" />
           </button>
 
           {/* CENTER: Logo */}
@@ -67,7 +67,7 @@ const Navbar: React.FC = () => {
 
       {/* Sidebar Overlay */}
       <div 
-        className={`fixed inset-0 z-[60] bg-navy/50 backdrop-blur-sm transition-opacity duration-300 ${
+        className={`fixed inset-0 z-[60] bg-navy/80 backdrop-blur-sm transition-opacity duration-300 ${
           isSidebarOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}
         onClick={closeSidebar}
@@ -81,7 +81,7 @@ const Navbar: React.FC = () => {
       >
         <div className="p-6 flex justify-between items-center border-b border-gray-100 h-20">
           <img src="https://socabeg.com/logo.png" alt="SOCABEG" className="h-8 w-auto" />
-          <button onClick={closeSidebar} className="text-navy hover:text-construction">
+          <button onClick={closeSidebar} className="text-navy hover:text-construction transition-colors">
             <X className="w-6 h-6" />
           </button>
         </div>
@@ -92,10 +92,10 @@ const Navbar: React.FC = () => {
               key={link.path}
               to={link.path}
               onClick={closeSidebar}
-              className={`flex items-center justify-between px-4 py-4 rounded-lg transition-all ${
+              className={`flex items-center justify-between px-4 py-4 rounded-sm transition-all border-l-4 ${
                 isActive(link.path) 
-                  ? 'bg-navy text-white shadow-md' 
-                  : 'text-navy hover:bg-gray-50'
+                  ? 'bg-gray-50 border-construction text-navy font-bold' 
+                  : 'border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-200'
               }`}
             >
               <span className="text-sm font-bold uppercase tracking-widest">{link.name}</span>
@@ -103,10 +103,10 @@ const Navbar: React.FC = () => {
             </Link>
           ))}
           
-          <div className="mt-8 pt-8 border-t border-gray-100 px-4">
+          <div className="mt-12 pt-8 border-t border-gray-100 px-4">
              <div className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">Contact</div>
-             <p className="text-sm text-navy mb-2">+221 33 800 00 00</p>
-             <p className="text-sm text-navy">info@socabeg.com</p>
+             <p className="text-sm text-navy mb-2 font-medium">+221 33 800 00 00</p>
+             <p className="text-sm text-navy font-medium">info@socabeg.com</p>
           </div>
         </div>
       </div>
