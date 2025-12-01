@@ -1,8 +1,9 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { PageRoutes } from '../types';
 import { useLanguage } from '../contexts/LanguageContext';
-import { MapPin, Phone, Mail } from 'lucide-react';
+import { MapPin, Phone, Mail, Clock } from 'lucide-react';
 
 const Footer: React.FC = () => {
   const { t } = useLanguage();
@@ -49,16 +50,20 @@ const Footer: React.FC = () => {
             <h3 className="text-white font-bold uppercase tracking-widest mb-6 text-sm border-b border-white/10 pb-2 inline-block">Contact</h3>
             <ul className="space-y-4 text-sm text-gray-400">
               <li className="flex items-start gap-3">
-                <MapPin className="h-4 w-4 text-construction mt-1" />
-                <span>123 Avenue Leopold Sedar Senghor, Dakar</span>
+                <MapPin className="h-4 w-4 text-construction mt-1 flex-shrink-0" />
+                <span>Fann-Hock – Corniche face Cour Suprême, BP 1270, Dakar, Sénégal</span>
               </li>
               <li className="flex items-center gap-3">
-                <Phone className="h-4 w-4 text-construction" />
-                <span>+221 33 800 00 00</span>
+                <Phone className="h-4 w-4 text-construction flex-shrink-0" />
+                <span>+221 33 889 35 35</span>
               </li>
               <li className="flex items-center gap-3">
-                <Mail className="h-4 w-4 text-construction" />
-                <span>info@socabeg.com</span>
+                <Mail className="h-4 w-4 text-construction flex-shrink-0" />
+                <span>infos@socabeg.sn</span>
+              </li>
+              <li className="flex items-center gap-3">
+                <Clock className="h-4 w-4 text-construction flex-shrink-0" />
+                <span>Mon–Fri 08:00–18:00</span>
               </li>
             </ul>
           </div>

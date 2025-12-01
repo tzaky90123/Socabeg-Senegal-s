@@ -13,7 +13,7 @@ const About: React.FC = () => {
   return (
     <div className="w-full">
       {/* 1. HERO (Fullscreen) */}
-      <section className="relative min-h-screen flex flex-col justify-center items-center bg-navy text-white text-center px-4 pb-20">
+      <section className="relative min-h-screen flex flex-col bg-navy text-white text-center">
         <div className="absolute inset-0 z-0">
           <img 
             src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=2070&auto=format&fit=crop" 
@@ -23,31 +23,34 @@ const About: React.FC = () => {
           <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/50 to-transparent"></div>
         </div>
 
-        <div className="relative z-10 max-w-5xl mx-auto mb-12">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-            {t("About Us", "À Propos de Nous")}
-          </h1>
-          <p className="text-sm md:text-base text-gray-200 max-w-3xl mx-auto font-light">
-            {t("Building Senegal Through Excellence and Innovation.", "Construire le Sénégal par l'Excellence et l'Innovation.")}
-          </p>
+        {/* Content Area */}
+        <div className="relative z-10 flex-grow flex flex-col justify-center items-center px-4">
+          <div className="max-w-5xl mx-auto">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+              {t("About Us", "À Propos de Nous")}
+            </h1>
+            <p className="text-sm md:text-base text-gray-200 max-w-3xl mx-auto font-light">
+              {t("Building Senegal Through Excellence and Innovation.", "Construire le Sénégal par l'Excellence et l'Innovation.")}
+            </p>
+          </div>
         </div>
         
-        {/* Buttons */}
-        <div className="relative z-10 flex flex-col md:flex-row gap-4 justify-center items-center px-4">
-          <Link to={PageRoutes.HOME} className="w-full md:w-auto">
-             <Button fullWidth variant="outline" className="text-white border-white hover:bg-white hover:text-navy px-8 py-4 text-sm md:text-lg font-bold uppercase tracking-wider">
-              {t("Home", "Accueil")}
-            </Button>
-          </Link>
-          <Link to={PageRoutes.CONTACT} className="w-full md:w-auto">
-             <Button fullWidth className="bg-construction text-navy hover:bg-white hover:text-navy px-8 py-4 text-sm md:text-lg font-bold uppercase tracking-wider">
-              {t("Contact", "Contact")}
-            </Button>
-          </Link>
+        {/* Bottom Action Area */}
+        <div className="relative z-10 w-full flex flex-col items-center gap-4 pb-4">
+          <div className="flex flex-col md:flex-row gap-4 justify-center items-center px-4 w-full">
+            <Link to={PageRoutes.HOME} className="w-full md:w-auto">
+               <Button fullWidth variant="outline" className="text-white border-white hover:bg-white hover:text-navy px-8 py-4 text-sm md:text-lg font-bold uppercase tracking-wider">
+                {t("Home", "Accueil")}
+              </Button>
+            </Link>
+            <Link to={PageRoutes.CONTACT} className="w-full md:w-auto">
+               <Button fullWidth className="bg-construction text-navy hover:bg-white hover:text-navy px-8 py-4 text-sm md:text-lg font-bold uppercase tracking-wider">
+                {t("Contact", "Contact")}
+              </Button>
+            </Link>
+          </div>
+          <HeroBottomNav />
         </div>
-
-        {/* Hero Nav */}
-        <HeroBottomNav />
       </section>
 
       {/* 2. COMPANY OVERVIEW (Fullscreen) */}

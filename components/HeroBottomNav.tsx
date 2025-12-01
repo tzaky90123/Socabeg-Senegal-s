@@ -19,24 +19,28 @@ const HeroBottomNav: React.FC = () => {
   ];
 
   return (
-    <div className="absolute bottom-0 left-0 w-full z-30 bg-navy/90 border-t border-white/10 backdrop-blur-sm">
-      <div className="max-w-7xl mx-auto px-4 overflow-x-auto hide-scrollbar">
-        <div className="flex justify-between items-center h-16 md:h-20 min-w-max gap-4 md:gap-8">
-          {links.map((link) => {
-            const isActive = location.pathname === link.path;
-            return (
-              <Link
-                key={link.path}
-                to={link.path}
-                className={`text-xs md:text-sm font-bold uppercase tracking-widest transition-colors duration-300 px-2 ${
-                  isActive ? 'text-construction' : 'text-gray-400 hover:text-white'
-                }`}
-              >
-                {link.name}
-              </Link>
-            );
-          })}
-        </div>
+    <div className="w-full px-4 overflow-x-auto hide-scrollbar z-20">
+      <div className="flex justify-center items-center gap-2 md:gap-4 min-w-max pb-4 md:pb-8">
+        {links.map((link) => {
+          const isActive = location.pathname === link.path;
+          return (
+            <Link
+              key={link.path}
+              to={link.path}
+              className={`
+                px-3 py-2 md:px-4 md:py-2 
+                text-[10px] md:text-xs font-bold uppercase tracking-widest 
+                border transition-all duration-300
+                ${isActive 
+                  ? 'border-construction text-construction bg-white/10' 
+                  : 'border-white text-white bg-transparent hover:border-construction hover:text-construction'
+                }
+              `}
+            >
+              {link.name}
+            </Link>
+          );
+        })}
       </div>
     </div>
   );

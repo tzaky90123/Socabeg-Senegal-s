@@ -13,7 +13,7 @@ const Mines: React.FC = () => {
   return (
     <div className="w-full">
       {/* 1. HERO (Fullscreen) */}
-      <section className="relative min-h-screen flex flex-col justify-center items-center bg-navy text-white text-center px-4 overflow-hidden pb-20">
+      <section className="relative min-h-screen flex flex-col bg-navy text-white text-center overflow-hidden">
          <div className="absolute inset-0 z-0">
             <img 
               src="https://images.unsplash.com/photo-1516937941344-00b4ec73303b?q=80&w=2069&auto=format&fit=crop" 
@@ -23,31 +23,34 @@ const Mines: React.FC = () => {
             <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/50 to-transparent"></div>
          </div>
          
-         <div className="relative z-10 max-w-5xl mx-auto mb-12">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-            {t("Mining Operations", "Opérations Minières")}
-          </h1>
-          <p className="text-sm md:text-base text-gray-200 max-w-3xl mx-auto font-light">
-            {t("Responsible Exploration for National Growth.", "Exploration Responsable pour la Croissance Nationale.")}
-          </p>
+         {/* Content Area */}
+         <div className="relative z-10 flex-grow flex flex-col justify-center items-center px-4">
+           <div className="max-w-5xl mx-auto">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+              {t("Mining Operations", "Opérations Minières")}
+            </h1>
+            <p className="text-sm md:text-base text-gray-200 max-w-3xl mx-auto font-light">
+              {t("Responsible Exploration for National Growth.", "Exploration Responsable pour la Croissance Nationale.")}
+            </p>
+           </div>
         </div>
 
-        {/* Buttons */}
-        <div className="relative z-10 flex flex-col md:flex-row gap-4 justify-center items-center px-4">
-          <Link to={PageRoutes.MINES} className="w-full md:w-auto">
-             <Button fullWidth className="bg-construction text-navy hover:bg-white hover:text-navy px-8 py-4 text-sm md:text-lg font-bold uppercase tracking-wider">
-              {t("Projects", "Projets")}
-            </Button>
-          </Link>
-          <Link to={PageRoutes.CONTACT} className="w-full md:w-auto">
-             <Button fullWidth variant="outline" className="text-white border-white hover:bg-white hover:text-navy px-8 py-4 text-sm md:text-lg font-bold uppercase tracking-wider">
-              {t("Contact", "Contact")}
-            </Button>
-          </Link>
+        {/* Bottom Action Area */}
+        <div className="relative z-10 w-full flex flex-col items-center gap-4 pb-4">
+            <div className="flex flex-col md:flex-row gap-4 justify-center items-center px-4 w-full">
+              <Link to={PageRoutes.MINES} className="w-full md:w-auto">
+                 <Button fullWidth className="bg-construction text-navy hover:bg-white hover:text-navy px-8 py-4 text-sm md:text-lg font-bold uppercase tracking-wider">
+                  {t("Projects", "Projets")}
+                </Button>
+              </Link>
+              <Link to={PageRoutes.CONTACT} className="w-full md:w-auto">
+                 <Button fullWidth variant="outline" className="text-white border-white hover:bg-white hover:text-navy px-8 py-4 text-sm md:text-lg font-bold uppercase tracking-wider">
+                  {t("Contact", "Contact")}
+                </Button>
+              </Link>
+            </div>
+            <HeroBottomNav />
         </div>
-
-        {/* Hero Nav */}
-        <HeroBottomNav />
       </section>
 
       {/* 2. SERVICES (Fullscreen) */}
